@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+  box-sizing: border-box;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 100px;
+  z-index: 1000;
+}
+
+header .toggle {
+  max-width: 60px;
+  cursor: pointer;
+}
+header .logo img,
+header .toggle img {
+  max-width: 100%;
+}
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 100px;
+  background: url(img/mario.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner .content {
+  padding: 10px;
+  max-width: 550px;
+  background-color: #27262c;
+  border-radius: 5%;
+}
+.banner .content h2 {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 2.1em;
+  letter-spacing: 0.1em;
+  color: #e94a4a;
+  -webkit-text-stroke: 1px black;
+}
+.banner .content p {
+  font-size: 1.6em;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.5em;
+  color: #fff;
+  -webkit-text-stroke: 0.5px black;
+  margin: 15px 0 35px;
+}
+.play {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: red;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 1.2em;
+}
+.trailer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.95);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+.trailer.active {
+  visibility: visible;
+  opacity: 1;
+}
+.iframe-wrap {
+  width: 100%;
+  max-width: 900px;
+}
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+.iframe-container iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.trailer .close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  filter: invert(1);
+  max-width: 32px;
+}
+@media (max-width: 991px) {
+  header {
+    padding: 20px 50px;
+  }
+
+  header .toggle {
+    max-width: 40px;
+  }
+  .banner {
+    padding: 100px 50px;
+  }
+  .banner .content h2 {
+    font-weight: 400;
+    font-size: 2em;
+    letter-spacing: 0.05em;
+  }
+  .banner .content p {
+    font-size: 1em;
+  }
+  .slide {
+    position: relative;
+    bottom: initial;
+    left: 0;
+    width: 250px;
+    height: 150px;
+    margin: 20px 0;
+  }
+  .trailer video {
+    width: 90%;
+  }
+}
+svg#playBtn {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.playBut {
+  display: inline-block;
+  transition: all 0.5s ease;
+}
+.playBut:hover {
+  color: #fff;
+}
+ul {
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  margin: auto;
+  max-width: 1000px;
+  justify-content: space-between;
+  text-align: center;
+}
+li {
+  padding: 1rem 2rem 1.15rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #ebebeb;
+  min-width: 80px;
+  margin: auto;
+}
+
+li:hover {
+  background-image: url('https://scottyzen.sirv.com/Images/v/button.png');
+  background-size: 100% 100%;
+  color: #27262c;
+  animation: spring 300ms ease-out;
+  text-shadow: 0 -1px 0 #ef816c;
+  font-weight: bold;
+}
+li:active {
+  transform: translateY(4px);
+}
+
+@keyframes spring {
+  15% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(1.2, 1.1);
+  }
+  40% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(0.95, 0.95);
+  }
+  75% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(1.05, 1);
+  }
+  100% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: scale(1, 1);
+  }
+}
