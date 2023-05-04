@@ -1,12 +1,52 @@
-function toggle() {
-  var trailer = document.querySelector('.trailer');
-  trailer.classList.toggle('active');
-  if (!trailer.classList.contains('active')) {
-    var iframe = document.querySelector('iframe');
-    var iframeSrc = iframe.src;
-    iframe.src = iframeSrc;
+const cont = document.querySelector('.container');
+const seatingArea = document.getElementById('seating-area');
+
+const arrangement = [
+  [0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 1],
+  [0, 0, 0, 2, 1, 1, 0, 0, 2, 0, 0, 0],
+  [0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 1],
+  [0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 1],
+  [0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 1, 1],
+  [0, 1, 0, 2, 0, 0, 0, 0, 2, 0, 1, 1],
+];
+
+for (let i = 0; i < arrangement.length; i++) {
+  const row = document.createElement('div');
+  row.classList.add('row');
+  for (let j = 0; j < arrangement[i].length; j++) {
+    const seat = document.createElement('div');
+    seat.classList.add('seat');
+
+    if (arrangement[i][j] === 1) {
+      seat.classList.add('occupied');
+    } else if (arrangement[i][j] === 2) {
+      seat.classList.add('corridor');
+    }
+
+    seat.addEventListener('click', () => {
+      seat.classList.toggle('selected');
+    });
+
+    row.appendChild(seat);
   }
+
+  seatingArea.appendChild(row);
 }
+
+let selectedSeats = 0;
+
+const seat = document.querySelectorAll('.seat:not(.occupied)');
+seats.forEach(seat => {
+  seat.addEventListener('click', () => {
+    seat.classList.toggle('selected');
+    console.info('selected');
+
+    selectedSeats = document.querySelectorAll('.seat.selected').length;
+  });
+});
+
+const cinemaSeats = document.getElementById('cinema-seats');
+cinemaSeats.innerHTML = createSeats(seatsArrangement);
 
 //seats selections
 const container = document.querySelector('.container');
