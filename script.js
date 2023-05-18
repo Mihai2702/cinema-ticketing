@@ -39,19 +39,22 @@ const handleMovieSelection = () => {
   switch (selectedMovieValue) {
     case '1':
       url = 'proiectii/1.json';
+      console.log('url-ul este ', url);
       break;
     case '2':
       url = 'proiectii/2.json';
+      console.log('url-ul este ', url);
       break;
     case '3':
       url = 'proiectii/3.json';
+      console.log('url-ul este ', url);
       break;
   }
   fetchJsonData(url);
 };
 
 const generateSeats = seatingArrangement => {
-  container.innerHTML = ''; // Clear existing seats
+  container.innerHTML = '';
 
   seatingArrangement.forEach((row, rowIndex) => {
     const seatRow = document.createElement('div');
