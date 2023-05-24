@@ -54,7 +54,7 @@ const handleMovieSelection = () => {
 };
 
 const generateSeats = seatingArrangement => {
-  container.innerHTML = '';
+  container.innerHTML = '<div class="screen"></div>';
 
   seatingArrangement.forEach((row, rowIndex) => {
     const seatRow = document.createElement('div');
@@ -65,16 +65,17 @@ const generateSeats = seatingArrangement => {
       seat.classList.add('seat');
       seat.classList.add(`seat-${seatIndex + 1}`);
 
+      seat.id = `seat-${rowIndex + 1}-${seatIndex + 1}`;
+
       if (seatType === 1) {
         seat.classList.add('occupied');
       } else if (seatType === 2) {
         seat.classList.add('corridor');
+        seat.removeAttribute('id');
       }
       if (seatType === 0) {
         seat.addEventListener('click', () => {
-          seat.classList.toggle('selected');
-          updateSelectedCount();
-          calculateTotalPrice();
+          handleSeatSelection(seat);
         });
       }
       seatRow.appendChild(seat);
@@ -82,6 +83,33 @@ const generateSeats = seatingArrangement => {
 
     container.appendChild(seatRow);
   });
+};
+
+const handleSeatSelection = seat => {
+  seat.classList.toggle('selected');
+  updateSelectedCount();
+  calculateTotalPrice();
+  generateTicketMessage();
+};
+
+const generateTicketMessage = () => {
+  const selectedSeats = document.querySelectorAll('.seat.selected');
+  const seatIdMessages = [];
+
+  selectedSeats.forEach(seat => {
+    const seatId = seat.id;
+    const idParts = seatId.split('-');
+
+    if (idParts.length === 3) {
+      const rowNumber = idParts[1];
+      const seatNumber = idParts[2];
+      const seatMessage = `randul ${rowNumber} locul ${seatNumber}`;
+      seatIdMessages.push(seatMessage);
+    }
+  });
+
+  const ticketMessage = `Locurile tale sunt: ${seatIdMessages.join(', ')}`;
+  console.log(ticketMessage);
 };
 
 const movieSelect = document.getElementById('movie');
