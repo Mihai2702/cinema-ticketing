@@ -103,7 +103,7 @@ const generateTicketMessage = () => {
     if (idParts.length === 3) {
       const rowNumber = idParts[1];
       const seatNumber = idParts[2];
-      const seatMessage = `randul ${rowNumber} locul ${seatNumber}`;
+      const seatMessage = ` locul ${seatNumber} randul ${rowNumber} `;
       seatIdMessages.push(seatMessage);
     }
   });
