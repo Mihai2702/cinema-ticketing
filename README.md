@@ -4,7 +4,7 @@ A simple app for buying cinema tickets
 
 ## Live preview
 
-[Livepreview](https://mihai2702.github.io/cinema-ticketing/)
+[Live preview](https://mihai2702.github.io/cinema-ticketing/)
 
 ## TEAM:
 
