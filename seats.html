@@ -39,6 +39,23 @@
 
     <p class="text">Ai selectat <span id="count">0</span> locuri in valoare de <span id="total">0 </span> RON. <button class="buy">CUMPARA</button></p>
 
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h2>Cumpara bilete</h2>
+        <form id="ticketForm">
+          <label for="name">Nume:</label>
+          <input type="text" id="name" name="Nume" required />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </form>
+        <p id="ticket-message"></p>
+        <div class="modal-buttons">
+          <button id="close-modal">Close</button>
+          <button id="confirm-ticket">Confirm</button>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

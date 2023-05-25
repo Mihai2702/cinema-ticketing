@@ -1,5 +1,28 @@
 let price;
+let ticketMessageDisplayed = false;
 const container = document.querySelector('.container');
+
+const buyButton = document.querySelector('.buy');
+buyButton.addEventListener('click', () => {
+  generateTicketMessage();
+  openModal();
+});
+
+const openModal = () => {
+  const modal = document.querySelector('.modal');
+  const closeModalButton = document.getElementById('close-modal');
+
+  modal.style.display = 'block';
+
+  closeModalButton.addEventListener('click', () => {
+    closeModal();
+  });
+};
+
+const closeModal = () => {
+  const modal = document.querySelector('.modal');
+  modal.style.display = 'none';
+};
 
 // Update the count number of the seats
 const updateSelectedCount = () => {
@@ -103,13 +126,14 @@ const generateTicketMessage = () => {
     if (idParts.length === 3) {
       const rowNumber = idParts[1];
       const seatNumber = idParts[2];
-      const seatMessage = ` locul ${seatNumber} randul ${rowNumber} `;
+      const seatMessage = `Locul ${seatNumber}, randul ${rowNumber}`;
       seatIdMessages.push(seatMessage);
     }
   });
 
-  const ticketMessage = `Locurile tale sunt: ${seatIdMessages.join(', ')}`;
-  console.log(ticketMessage);
+  const ticketMessage = seatIdMessages.join(', ');
+  const ticketMessageElement = document.getElementById('ticket-message');
+  ticketMessageElement.textContent = `Locurile tale sunt: ${ticketMessage}`;
 };
 
 const movieSelect = document.getElementById('movie');
